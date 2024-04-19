@@ -1,14 +1,16 @@
 package com.convidados.controllers;
+import com.convidados.model.Convidado;
+import com.convidados.repository.ConvidadoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ConvidadosController {.
-    //localhost:8080/convidados/listar
+public class ConvidadosController {
+    @Autowired //para não precisar criar um objeto
+    private ConvidadoRepository convidadoRepository;
+    //localhost:8080/convidados
     @GetMapping("/convidados")
     public ModelAndView listar(){
     //cria o objeto mv e insere uma lista de convidados
@@ -17,7 +19,7 @@ public class ConvidadosController {.
     mv.addObject(new Convidado());
     //envia uma lista "convidados" da tabela convidados
     mv.addObject("convidados",
-            convidadosRepository.findAll());
+            convidadoRepository.findAll());
     return mv;
     }
 }
