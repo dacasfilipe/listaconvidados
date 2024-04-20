@@ -22,7 +22,7 @@
         </div>
         <div class="panel-body">
             <form class="form-inline" method="POST" style="margin:20px 0"
-                  th:action="@/convidados" th:object="${convidado}">
+                  th:action="@{/convidados}" th:object="${convidado}">
                 <div class="form-group">
                     <input type="text" class="form-control"
                     placeholder="Nome" th:field="*{nome}"/>
@@ -48,5 +48,7 @@
             </table>
         </div>
     </div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
